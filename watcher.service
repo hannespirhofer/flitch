@@ -1,0 +1,12 @@
+# ~/.config/systemd/user
+
+[Unit]
+Description=Notes watcher
+
+[Service]
+EnvironmentFile=%h/flitch/.env
+ExecStart=%h/flitch/watcher.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
