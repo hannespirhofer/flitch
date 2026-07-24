@@ -21,12 +21,18 @@ Quick-capture notes with an LLM-powered auto-filing pipeline — jot it, forget 
    - `FLITCH_NOTES_DIR` — absolute path to your cloned `flitch` directory
    - `FLITCH_REPO_DIR` — absolute path to your docs repo from step 2
 
-4. Configure `watcher.service`:
+4. Make the watcher executable:
+   ```
+   chmod u+x watcher.sh
+   ```
+
+5. Configure `watcher.service`:
    - Update `EnvironmentFile=` and `ExecStart=` to match your flitch path
    - `%h` = your home directory
 
-5. Copy the service file:
+6. Copy the service file:
    ```
+   mkdir -p ~/.config/systemd/user
    cp watcher.service ~/.config/systemd/user/
    ```
 
