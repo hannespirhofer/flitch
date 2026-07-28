@@ -68,7 +68,7 @@ while inotifywait -e modify,create,delete "$FLITCH_NOTES_FILE"; do
   # if no repo changes we exit and dont need to push
   if git diff --quiet && git diff --cached --quiet; then
     log "No changes to commit, skipping commit and push."
-    exit
+    continue
   fi
 
   git add -A
