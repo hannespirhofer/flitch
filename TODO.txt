@@ -1,0 +1,1 @@
+- if the service is not loaded the notes get lost -> dont clear file if service dont run and just append them - giving back info to user that service is down
