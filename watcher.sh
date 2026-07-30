@@ -72,10 +72,10 @@ while inotifywait -e modify,create,delete "$FLITCH_NOTES_FILE"; do
   fi
 
   # Git pull rebase first and exit if conflicts
-  git pull --rebase origin main
+  git pull
   if [ $? -ne 0 ]; then
     git rebase --abort
-    log "%s - %s\n" "$(date)" "Pull/Rebase failed, conflict likely. Aborted, skipping this run."
+    log "Pull/Rebase failed, conflict likely. Aborted, skipping this run."
     continue
   fi
 
