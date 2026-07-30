@@ -71,6 +71,14 @@ while inotifywait -e modify,create,delete "$FLITCH_NOTES_FILE"; do
     continue
   fi
 
+  # Git pull rebase first and exit if conflicts
+  git pull --rebase origin main
+  if [ $? -ne 0 ]; then
+    git rebase --abort
+    log "%s - %s\n" "$(date)" "Pull/Rebase failed, conflict likely. Aborted, skipping this run."
+    continue
+  fi
+
   git add -A
   git commit -m "flitch: autoupdate docs" > /dev/null 2>&1
   git push > /dev/null 2>&1
