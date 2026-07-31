@@ -45,12 +45,12 @@ Quick-capture notes with an LLM-powered auto-filing pipeline — jot it, forget 
 
    Optional check: log out and back in, then run `status` again — should already be active.
 
-7. Add the quick-capture function to your shell config:
+7. Add the quick-capture function to your shell config (Append the notes - as the cleaning of the file gets done by the watcher):
    ```
    nano ~/.bashrc
    ```
    ```sh
-   note() { echo "$1" > ~/the/path/to/flitch/flitchnotes.txt }
+   note() { echo "$1" >> ~/the/path/to/flitch/flitchnotes.txt }
    ```
    ```
    source ~/.bashrc

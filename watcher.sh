@@ -60,8 +60,6 @@ while inotifywait -e modify,create,delete "$FLITCH_NOTES_FILE"; do
 
   ailog "$RESULT"
 
-  # clean the notes file
-  > "$FLITCH_NOTES_FILE"
 
   cd "$FLITCH_DOCS_REPO_DIR"
 
@@ -82,6 +80,9 @@ while inotifywait -e modify,create,delete "$FLITCH_NOTES_FILE"; do
   git add -A
   git commit -m "flitch: autoupdate docs" > /dev/null 2>&1
   git push > /dev/null 2>&1
+
+  # clean the notes file
+  > "$FLITCH_NOTES_FILE"
 
   log "Notes summarized and committed"
 done
